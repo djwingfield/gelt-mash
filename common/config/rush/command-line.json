@@ -8,6 +8,13 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-prettier",
       "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "gelt-mash:serve",
+      "commandKind": "global",
+      "summary": "Serve the gelt-mash app.",
+      "safeForSimultaneousRushProcesses": true,
+      "shellCommand": "cd apps/gelt-mash && vite"
     }
   ],
   "parameters": []
