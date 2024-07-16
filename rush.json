@@ -51,6 +51,8 @@
      */
     "nodeSupportedVersionInstructions": "Run 'nvm use' to switch to the expected node version.",
 
+    "ensureConsistentVersions": true,
+
     /**
      * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
      * spend six months in a stabilization period before the first Long Term Support (LTS) version.
@@ -205,7 +207,7 @@
          * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
          * to retrieve the latest activity for the remote main branch.
          */
-        // "url": "https://github.com/microsoft/rush-example",
+        "url": "https://github.com/djwingfield/rush-projects"
         /**
          * The default branch name. This tells "rush change" which remote branch to compare against.
          * The default value is "main"
