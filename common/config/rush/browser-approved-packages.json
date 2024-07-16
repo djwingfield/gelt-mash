@@ -1,0 +1,26 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@vitejs/plugin-vue",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "typescript",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vite",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vue",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "vue-tsc",
+      "allowedCategories": [ "production" ]
+    }
+  ]
+}
