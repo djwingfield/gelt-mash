@@ -4,6 +4,5 @@ module.exports = {
     endOfLine: 'auto', // Use .gitattributes to manage newlines
     singleQuote: true,
     trailingComma: 'es5',
-    tabs: true,
     tabWidth: 4,
 };
