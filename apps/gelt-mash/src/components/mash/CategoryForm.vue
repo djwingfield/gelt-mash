@@ -28,7 +28,7 @@ const focusOnLastCategory = async () => {
                 :key="category.id"
                 placeholder="Category name"
             />
-            <button>
+            <button @click="mashStore.removeCategory(category.id)">
                 <fa-icon :icon="['far', 'trash-can']"></fa-icon>
             </button>
         </div>

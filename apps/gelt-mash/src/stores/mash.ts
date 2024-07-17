@@ -45,6 +45,9 @@ export const useMashStore = defineStore('counter', {
 
             this.categories.push({ id: categoryId++, name, options: [] });
         },
+        removeCategory(categoryId: number) {
+            this.categories = this.categories.filter((category) => category.id !== categoryId);
+        },
         addOption(categoryName: string, name: string) {
             const category = this.categories.find((category) => category.name === categoryName);
 
