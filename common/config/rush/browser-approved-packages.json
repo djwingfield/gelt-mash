@@ -7,6 +7,18 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "autoprefixer",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "postcss",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "tailwindcss",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "typescript",
       "allowedCategories": [ "production" ]
     },
