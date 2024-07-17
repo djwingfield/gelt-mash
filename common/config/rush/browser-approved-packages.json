@@ -3,6 +3,22 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
   "packages": [
     {
+      "name": "@fortawesome/fontawesome-svg-core",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@fortawesome/free-regular-svg-icons",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@fortawesome/free-solid-svg-icons",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@fortawesome/vue-fontawesome",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@vitejs/plugin-vue",
       "allowedCategories": [ "production" ]
     },
