@@ -14,7 +14,7 @@
       "commandKind": "global",
       "summary": "Serve the gelt-mash app.",
       "safeForSimultaneousRushProcesses": true,
-      "shellCommand": "cd apps/gelt-mash && npx vite"
+      "shellCommand": "cd apps/gelt-mash && pnpx vite"
     }
   ],
   "parameters": []

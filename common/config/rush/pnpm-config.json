@@ -1,6 +1,12 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/pnpm-config.schema.json",
     "useWorkspaces": true,
+    "resolutionMode": "highest",
+    "autoInstallPeers": false,
+    "strictPeerDependencies": true,
+    "pnpmStore": "local",
+    "preventManualShrinkwrapChanges": true,
+    "alwaysInjectDependenciesFromOtherSubspaces": false,
     "pnpmLockfilePolicies": {},
     "globalOverrides": {},
     "globalPeerDependencyRules": {},
