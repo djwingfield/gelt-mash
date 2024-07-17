@@ -11,6 +11,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "pinia",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "postcss",
       "allowedCategories": [ "production" ]
     },
