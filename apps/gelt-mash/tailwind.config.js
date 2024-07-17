@@ -12,6 +12,15 @@ export default {
                     700: '#175CD3',
                     900: '#194185',
                 },
+                gray: {
+                    25: '#FCFCFD',
+                    200: '#EAECF0',
+                    300: '#D0D5DD',
+                    500: '#667085',
+                    600: '#475467',
+                    700: '#344054',
+                    900: '#101828',
+                },
             },
             backgroundImage: {
                 header: 'linear-gradient(90deg, #2E90FA 0%, #175CD3 100%)',
