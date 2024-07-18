@@ -32,7 +32,13 @@ const focusOnLastCategory = async () => {
                 <fa-icon :icon="['far', 'trash-can']"></fa-icon>
             </button>
         </div>
-        <button class="btn self-start" @click="addCategory('')" :disabled="!mashStore.canAddMoreCategories">
+        <button
+            class="self-start"
+            filled
+            @click="addCategory('')"
+            :disabled="!mashStore.canAddMoreCategories"
+        >
+            <fa-icon class="btn-icon" :icon="['far', 'trash-can']"></fa-icon>
             Add a Category
         </button>
     </div>
