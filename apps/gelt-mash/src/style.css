@@ -12,30 +12,44 @@
     button {
         @apply h-[40px] px-[24px]
             rounded-full
-            flex items-center justify-center;
+            flex items-center justify-center
+            text-primary
+            enabled:button-enabled;
 
         &:has(.svg-inline--fa) {
             @apply pl-[16px] gap-[8px];
         }
 
+        &[icon] {
+            @apply w-[40px] p-0 text-surface-variant-content;
+
+            &[selected] {
+                @apply text-primary;
+            }
+        }
+
         &[elevated] {
-            @apply bg-surface-container-low text-primary elevation-1 enabled:hover:elevation-2 disabled:button-disabled enabled:button-enabled;
+            @apply bg-surface-container-low text-primary elevation-1 enabled:hover:elevation-2 disabled:button-disabled;
         }
 
         &[filled] {
-            @apply bg-primary text-primary-content enabled:hover:elevation-1 disabled:button-disabled enabled:button-enabled;
+            @apply bg-primary text-primary-content enabled:hover:elevation-1 disabled:button-disabled;
+
+            &[icon][selected] {
+                @apply enabled:text-primary enabled:bg-surface-variant;
+            }
         }
 
         &[tonal] {
-            @apply bg-secondary-container text-secondary-container-content enabled:hover:elevation-1 disabled:button-disabled enabled:button-enabled;
+            @apply bg-secondary-container text-secondary-container-content enabled:hover:elevation-1 disabled:button-disabled;
         }
 
         &[outline] {
-            @apply text-primary border border-outline enabled:hover:bg-primary/[0.2] enabled:focus:bg-primary/[0.2] enabled:active:bg-primary/[0.2] disabled:border-outline/[0.12] disabled:text-surface-content/[0.38] enabled:button-enabled;
+            @apply text-primary border border-outline enabled:hover:bg-primary/[0.2] enabled:focus:bg-primary/[0.2] enabled:active:bg-primary/[0.2] disabled:border-outline/[0.12] disabled:text-surface-content/[0.38];
         }
 
         &[text] {
-            @apply px-[12px] text-primary enabled:hover:bg-primary/[0.2] enabled:focus:bg-primary/[0.2] enabled:active:bg-primary/[0.2] disabled:text-surface-content/[0.38] enabled:button-enabled;
+            @apply px-[12px] enabled:hover:bg-primary/[0.2] enabled:focus:bg-primary/[0.2] enabled:active:bg-primary/[0.2] disabled:text-surface-content/[0.38];
 
             &:has(.svg-inline--fa) {
                 @apply pr-[16px];

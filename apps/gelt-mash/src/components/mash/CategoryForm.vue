@@ -28,8 +28,8 @@ const focusOnLastCategory = async () => {
                 :key="category.id"
                 placeholder="Category name"
             />
-            <button @click="mashStore.removeCategory(category.id)">
-                <fa-icon :icon="['far', 'trash-can']"></fa-icon>
+            <button icon @click="mashStore.removeCategory(category.id)">
+                <fa-icon iconName="trash-can"></fa-icon>
             </button>
         </div>
         <button
@@ -38,7 +38,6 @@ const focusOnLastCategory = async () => {
             @click="addCategory('')"
             :disabled="!mashStore.canAddMoreCategories"
         >
-            <fa-icon class="btn-icon" :icon="['far', 'trash-can']"></fa-icon>
             Add a Category
         </button>
     </div>
