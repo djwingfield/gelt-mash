@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
 import { useMashStore } from '../../stores/mash';
+import { MashCategory } from '../../stores/types';
+
+const { category } = defineProps<{ category: MashCategory }>();
 
 const mashStore = useMashStore();
+const { canAddMoreOptions } = storeToRefs(mashStore);
+
 const inputRefs = ref<HTMLInputElement[]>([]);
-
-const addCategory = (name: string) => {
-    mashStore.addCategory(name);
-    focusOnLastCategory();
-};
-
-const focusOnLastCategory = async () => {
-    await nextTick();
-    const lastCategoryInput = inputRefs.value.slice(-1)[0];
-    lastCategoryInput.focus();
-    lastCategoryInput.select();
-};
 </script>
 
 <template>
     <div class="flex flex-col gap-2">
-        <div v-for="category of mashStore.categories" class="flex gap-2 flex-grow">
+        <input
+            v-model="category.name"
+            :id="'category-name-input-' + category.id"
+            placeholder="Category name"
+        />
+        <div v-for="option of category.options" class="flex gap-2">
             <input
-                v-model="category.name"
+                v-model="option.name"
                 ref="inputRefs"
-                :id="'category-name-input-' + category.id"
-                :key="category.id"
-                placeholder="Category name"
+                :id="'option-name-input-' + option.id"
+                :key="option.id"
+                placeholder="Option name"
+                class="flex-grow"
             />
-            <button icon @click="mashStore.removeCategory(category.id)">
+            <button icon @click="mashStore.removeOption(category.id, option.id)">
                 <fa-icon iconName="trash-can"></fa-icon>
             </button>
         </div>
         <button
             class="self-start"
-            filled
-            @click="addCategory('')"
-            :disabled="!mashStore.canAddMoreCategories"
+            tonal
+            @click="mashStore.addOption(category.id, '')"
+            :disabled="!canAddMoreOptions(category)"
         >
-            Add a Category
+            Add an option
         </button>
     </div>
 </template>

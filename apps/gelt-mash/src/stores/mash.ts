@@ -1,16 +1,6 @@
 import { defineStore } from 'pinia';
-
-interface MashOption {
-    id: number;
-    name: string;
-    removed: boolean;
-}
-
-interface MashCategory {
-    id: number;
-    name: string;
-    options: MashOption[];
-}
+import { generateRandomMashData } from './mash-randomiser';
+import { createCategory, createOption, MashCategory } from './types';
 
 interface MashState {
     categories: MashCategory[];
@@ -27,14 +17,13 @@ const initialMashState: MashState = {
     minCategories: 3,
 };
 
-let categoryId = 0;
-let optionId = 0;
-
 export const useMashStore = defineStore('counter', {
     state: () => initialMashState,
     getters: {
         options: (state) => state.categories.flatMap((category) => category.options),
         canAddMoreCategories: (state) => state.categories.length < state.maxCategories,
+        canAddMoreOptions: (state) => (category: MashCategory) =>
+            category.options.length < state.maxCategories,
     },
     actions: {
         addCategory(name: string) {
@@ -43,17 +32,31 @@ export const useMashStore = defineStore('counter', {
                 return;
             }
 
-            this.categories.push({ id: categoryId++, name, options: [] });
+            this.categories.push(createCategory(name));
         },
         removeCategory(categoryId: number) {
             this.categories = this.categories.filter((category) => category.id !== categoryId);
         },
-        addOption(categoryName: string, name: string) {
-            const category = this.categories.find((category) => category.name === categoryName);
+        removeOption(categoryId: number, optionId: number) {
+            const category = this.categories.find((category) => category.id === categoryId);
 
             if (category) {
-                category.options.push({ id: optionId++, name, removed: false });
+                category.options = category.options.filter((option) => option.id !== optionId);
             }
+        },
+        addOption(categoryId: number, name: string) {
+            const category = this.categories.find((category) => category.id === categoryId);
+
+            if (category) {
+                category.options.push(createOption(name));
+            }
+        },
+        randomize() {
+            this.categories = generateRandomMashData({
+                categories: this.categories,
+                minCategoryCount: this.minCategories,
+                maxCategoryCount: this.maxCategories,
+            });
         },
     },
 });
