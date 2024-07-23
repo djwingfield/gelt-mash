@@ -12,7 +12,7 @@ interface MashState {
     mashed: boolean;
 }
 
-const MASH_CATEGORY_NAME = 'MASH';
+const MASH_CATEGORY_NAME = 'Future Home';
 
 const defaultMashCategory = () =>
     createCategory(MASH_CATEGORY_NAME, ['Mansion', 'Apartment', 'Shack', 'House']);
@@ -102,6 +102,15 @@ export const useMashStore = defineStore('counter', {
 
             this.mashed = true;
             this.mashing = false;
+
+            alert(`MASH Completed!
+Your results are...
+
+${this.categories
+    .map((category) => `${category.name}: ${category.options.find((option) => !option.removed)?.name}`)
+    .join('\n')}
+
+                `);
         },
     },
 });
