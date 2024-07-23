@@ -24,6 +24,7 @@ const mashStore = useMashStore();
         <CategoryForm v-for="category of mashStore.nonMashCategories" :category="category" class="w-[100%]" />
 
         <button
+            v-if="!mashStore.mashing && !mashStore.mashed"
             filled
             @click="mashStore.addCategory('')"
             :disabled="!mashStore.canAddMoreCategories"

@@ -75,6 +75,12 @@ export const useMashStore = defineStore('counter', {
         },
         async runGame(count: number, timeout: number = 300) {
             this.mashing = true;
+            this.categories = [
+                ...this.categories.map((category) => ({
+                    ...category,
+                    options: category.options.map((option) => ({ ...option, removed: false })),
+                })),
+            ];
             const getRemovableOptions = () =>
                 this.categories
                     .filter((category) => category.options.filter((option) => !option.removed).length > 1)

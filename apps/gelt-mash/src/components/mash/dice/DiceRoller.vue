@@ -39,6 +39,9 @@ const rollDice = () => {
         <div class="flex gap-2">
             <Dice v-for="value of diceValues" :value="value"></Dice>
         </div>
-        <button filled @click="rollDice" :disabled="rolling || mashStore.mashing">Roll</button>
+        <button v-if="!mashStore.mashed" filled @click="rollDice" :disabled="rolling || mashStore.mashing">
+            Roll
+        </button>
+        <button v-else filled @click="rollDice" :disabled="rolling || mashStore.mashing">Roll again!</button>
     </div>
 </template>
