@@ -9,6 +9,7 @@ interface MashState {
     minCategories: number;
     error?: string;
     mashing: boolean;
+    mashed: boolean;
 }
 
 const MASH_CATEGORY_NAME = 'MASH';
@@ -22,6 +23,7 @@ const initialMashState: MashState = {
     maxCategories: 10,
     minCategories: 3,
     mashing: false,
+    mashed: false,
 };
 
 export const useMashStore = defineStore('counter', {
@@ -62,6 +64,7 @@ export const useMashStore = defineStore('counter', {
         },
         reset() {
             this.categories = [defaultMashCategory()];
+            this.mashed = false;
         },
         randomize() {
             this.categories = generateRandomMashData({
@@ -91,6 +94,7 @@ export const useMashStore = defineStore('counter', {
                 removeIndex += count - 1;
             }
 
+            this.mashed = true;
             this.mashing = false;
         },
     },

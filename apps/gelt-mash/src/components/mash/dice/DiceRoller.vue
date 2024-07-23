@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useMashStore } from '../../stores/mash';
+import { useMashStore } from '../../../stores/mash';
 import Dice from './Dice.vue';
 
 const mashStore = useMashStore();

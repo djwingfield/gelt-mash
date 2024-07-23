@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMashStore } from '../../stores/mash';
-import DiceRoller from '../dice/DiceRoller.vue';
 import CategoryForm from './CategoryForm.vue';
+import DiceRoller from './dice/DiceRoller.vue';
 import MashHeader from './MashHeader.vue';
 const mashStore = useMashStore();
 </script>
