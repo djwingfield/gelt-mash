@@ -32,7 +32,7 @@ const { value } = defineProps<{ value: 1 | 2 | 3 | 4 | 5 | 6 }>();
     </div>
 </template>
 
-<style>
+<style scoped>
 .pip {
     @apply size-[100%] bg-gray-500 rounded-full;
 }

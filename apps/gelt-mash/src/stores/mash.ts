@@ -51,6 +51,9 @@ export const useMashStore = defineStore('counter', {
                 category.options.push(createOption(name));
             }
         },
+        reset() {
+            this.categories = [];
+        },
         randomize() {
             this.categories = generateRandomMashData({
                 categories: this.categories,
