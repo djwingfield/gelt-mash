@@ -6,6 +6,7 @@ const mashStore = useMashStore();
 
 <template>
     <button tonal @click="mashStore.randomize()" class="mb-3">Randomise!</button>
+    <button tonal @click="mashStore.runGame(4)" class="mb-3">Run Game!</button>
     <div class="grid grid-cols-3 gap-6 card">
         <CategoryForm v-for="category of mashStore.categories" :category="category" />
         <button

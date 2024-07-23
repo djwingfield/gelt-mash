@@ -28,6 +28,7 @@ const inputRefs = ref<HTMLInputElement[]>([]);
                 placeholder="Option name"
                 class="flex-grow"
             />
+            {{ option.removed }}
             <button icon @click="mashStore.removeOption(category.id, option.id)">
                 <fa-icon iconName="trash-can"></fa-icon>
             </button>

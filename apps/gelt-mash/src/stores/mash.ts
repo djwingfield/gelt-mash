@@ -58,5 +58,27 @@ export const useMashStore = defineStore('counter', {
                 maxCategoryCount: this.maxCategories,
             });
         },
+        async runGame(count: number, timeout: number = 300) {
+            const getRemovableOptions = () =>
+                this.categories
+                    .filter((category) => category.options.filter((option) => !option.removed).length > 1)
+                    .flatMap((category) => category.options.filter((option) => !option.removed));
+
+            let removeIndex = count - 1;
+            let removableOptions = getRemovableOptions();
+
+            while (removableOptions.length) {
+                removeIndex = removeIndex % removableOptions.length;
+                removableOptions[removeIndex].removed = true;
+
+                await new Promise((resolve) => setTimeout(resolve, timeout));
+
+                this.categories = [...this.categories];
+                removableOptions = getRemovableOptions();
+                removeIndex += count - 1;
+            }
+
+            alert('Done!');
+        },
     },
 });
