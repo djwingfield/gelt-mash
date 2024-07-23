@@ -18,6 +18,7 @@ const inputRefs = ref<HTMLInputElement[]>([]);
             v-model="category.name"
             :id="'category-name-input-' + category.id"
             placeholder="Category name"
+            class="grow"
         />
         <div v-for="option of category.options" class="flex gap-2">
             <input
@@ -26,9 +27,8 @@ const inputRefs = ref<HTMLInputElement[]>([]);
                 :id="'option-name-input-' + option.id"
                 :key="option.id"
                 placeholder="Option name"
-                class="flex-grow"
+                class="grow"
             />
-            {{ option.removed }}
             <button icon @click="mashStore.removeOption(category.id, option.id)">
                 <fa-icon iconName="trash-can"></fa-icon>
             </button>

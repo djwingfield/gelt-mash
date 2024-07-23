@@ -2,23 +2,34 @@
 import { useMashStore } from '../../stores/mash';
 import DiceRoller from '../dice/DiceRoller.vue';
 import CategoryForm from './CategoryForm.vue';
+import MashHeader from './MashHeader.vue';
 const mashStore = useMashStore();
 </script>
 
 <template>
-    <button tonal @click="mashStore.reset()" class="mb-3">Reset!</button>
-    <button tonal @click="mashStore.randomize()" class="mb-3">Randomise!</button>
-    <button tonal @click="mashStore.runGame(4)" class="mb-3">Run Game!</button>
-    <div class="grid grid-cols-3 gap-6 card">
-        <CategoryForm v-for="category of mashStore.categories" :category="category" />
+    <div class="flex flex-col items-center gap-4">
+        <MashHeader></MashHeader>
+
+        <div class="flex gap-2">
+            <button tonal @click="mashStore.reset()" class="mb-3" :disabled="mashStore.mashing">
+                Reset!
+            </button>
+            <button tonal @click="mashStore.randomize()" class="mb-3" :disabled="mashStore.mashing">
+                Randomise!
+            </button>
+        </div>
+
+        <DiceRoller :numberOfDice="2" @rollComplete="mashStore.runGame($event)"></DiceRoller>
+
+        <CategoryForm v-for="category of mashStore.nonMashCategories" :category="category" class="w-[100%]" />
+
         <button
-            class="self-start"
             filled
             @click="mashStore.addCategory('')"
             :disabled="!mashStore.canAddMoreCategories"
+            class="item-start"
         >
             Add a Category
         </button>
     </div>
-    <DiceRoller :numberOfDice="2" @rollComplete="mashStore.runGame($event)"></DiceRoller>
 </template>

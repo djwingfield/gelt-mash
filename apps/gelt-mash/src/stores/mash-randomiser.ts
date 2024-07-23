@@ -2,26 +2,6 @@ import { createCategory, createOption, MashCategory, MashOption } from './types'
 
 const mashData: Map<string, string[]> = new Map([
     [
-        'Future Home',
-        [
-            'Mansion',
-            'Apartment',
-            'Shack',
-            'House',
-            'Castle',
-            'Cottage',
-            'Villa',
-            'Penthouse',
-            'Cabin',
-            'Treehouse',
-            'Farmhouse',
-            'Igloo',
-            'Hut',
-            'Caravan',
-            'Tent',
-        ],
-    ],
-    [
         "Future Partner's Name",
         [
             'Alex',

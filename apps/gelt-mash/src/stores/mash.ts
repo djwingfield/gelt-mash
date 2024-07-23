@@ -8,18 +8,27 @@ interface MashState {
     maxCategories: number;
     minCategories: number;
     error?: string;
+    mashing: boolean;
 }
 
+const MASH_CATEGORY_NAME = 'MASH';
+
+const defaultMashCategory = () =>
+    createCategory(MASH_CATEGORY_NAME, ['Mansion', 'Apartment', 'Shack', 'House']);
+
 const initialMashState: MashState = {
-    categories: [],
+    categories: [defaultMashCategory()],
     step: 0,
     maxCategories: 10,
     minCategories: 3,
+    mashing: false,
 };
 
 export const useMashStore = defineStore('counter', {
     state: () => initialMashState,
     getters: {
+        mashCategory: (state) => state.categories.find(({ name }) => name === MASH_CATEGORY_NAME),
+        nonMashCategories: (state) => state.categories.filter(({ name }) => name !== MASH_CATEGORY_NAME),
         options: (state) => state.categories.flatMap((category) => category.options),
         canAddMoreCategories: (state) => state.categories.length < state.maxCategories,
         canAddMoreOptions: (state) => (category: MashCategory) =>
@@ -52,7 +61,7 @@ export const useMashStore = defineStore('counter', {
             }
         },
         reset() {
-            this.categories = [];
+            this.categories = [defaultMashCategory()];
         },
         randomize() {
             this.categories = generateRandomMashData({
@@ -62,6 +71,7 @@ export const useMashStore = defineStore('counter', {
             });
         },
         async runGame(count: number, timeout: number = 300) {
+            this.mashing = true;
             const getRemovableOptions = () =>
                 this.categories
                     .filter((category) => category.options.filter((option) => !option.removed).length > 1)
@@ -81,7 +91,7 @@ export const useMashStore = defineStore('counter', {
                 removeIndex += count - 1;
             }
 
-            alert('Done!');
+            this.mashing = false;
         },
     },
 });
